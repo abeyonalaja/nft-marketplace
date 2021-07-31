@@ -16,6 +16,21 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
+const fs = require("fs");
+const privateKey = fs.readFileSync(".secret").toString();
 module.exports = {
+  networks: {
+    hardhat:{
+      chainId: 1337
+    },
+    mumbai: {
+      url: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
+      accounts: [privateKey]
+    },
+    mainnet: {
+      url: `https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
+      accounts: [privateKey]
+    }
+  },
   solidity: "0.8.4",
 };
