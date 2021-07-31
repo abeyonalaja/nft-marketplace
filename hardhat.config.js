@@ -18,6 +18,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 const fs = require("fs");
 const privateKey = fs.readFileSync(".secret").toString();
+
 module.exports = {
   networks: {
     hardhat:{
