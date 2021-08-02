@@ -2,7 +2,7 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/security/ReentranceyGuard.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract NFTMarket is ReentrancyGuard {
@@ -133,7 +133,7 @@ contract NFTMarket is ReentrancyGuard {
            }
         }
 
-        MarketItem[] memory items = new MarketItem[][itemCount];
+        MarketItem[] memory items = new MarketItem[](itemCount);
 
         for(uint i = 0; i < totalItemCount; i++){
             if(idToMarketItem[i + 1].seller == msg.sender){
@@ -143,7 +143,7 @@ contract NFTMarket is ReentrancyGuard {
                 currentIndex += 1;
             }
         }
-        
+
         return items;
     }
 
